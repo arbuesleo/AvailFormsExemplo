@@ -3,9 +3,9 @@ Este projeto tem como objetivo demonstrar a utilização do Framework [AvailForm
 
 # Instruções:
 
-- Realizar checkout do projeto:
+- Realizar clone do projeto:
     ```sh
-   git checkout https://github.com/leogomes26/AvailFormsExemplo.git
+   git clone https://github.com/leogomes26/AvailFormsExemplo.git
     ```
 # BackEnd
 Pré-requisitos:
