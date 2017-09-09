@@ -1,0 +1,23 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img ng-if="authDetails.imagem.base64" ng-src="{{'data:' + authDetails.imagem.filetype + ';base64,' + authDetails.imagem.base64}}" class="img-circle" alt="Imagem Perfil">
+            <img ng-if="!authDetails.imagem.base64" src="img/imgIndisponivel.jpg" class="img-circle" alt="Imagem Perfil">
+        </div>
+        <div class="pull-left info">
+            <p ng-bind="authDetails.name"></p>
+        </div>
+    </div>
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+        <li class="header">Menu</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li ng-if="hasAnyPermission(['ADMIN', 'FARMACIA'])"><a href="#/usuario"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
+        <li ng-if="hasAnyPermission(['ADMIN'])"><a href="#/cidade"><i class="fa fa-map"></i> <span>Cidades</span></a></li>
+        <li ng-if="hasAnyPermission(['ADMIN'])"><a href="#/estado"><i class="fa fa-map-signs"></i> <span>Estados</span></a></li>
+    </ul>
+
+    <!-- /.sidebar-menu -->
+</section>
+<!-- /.sidebar -->

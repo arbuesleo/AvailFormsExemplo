@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html ng-app="AvailFormsEx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AvailForms Exemplo</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- Depêndencias AvailFormsAngular -->
+
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="src/AvailFormsAngular/libs/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap 3.3.6 -->
+
+    <!-- AdminLTE App -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="src/AvailFormsAngular/admLTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="src/AvailFormsAngular/admLTE/dist/css/skins/_all-skins.css">
+    <link rel="stylesheet" href="src/AvailFormsAngular/admLTE/plugins/iCheck/all.css">
+    <link rel="stylesheet" href="src/AvailFormsAngular/admLTE/plugins/select2/select2.min.css">
+    <!-- AdminLTE -->
+
+    <!--NgNotify-->
+    <link rel="stylesheet" href="src/AvailFormsAngular/libs/ngNotify/ng-notify.min.css">
+    <!--NgNotify-->
+
+    <!--AvailFormsAngular-->
+    <link rel="stylesheet" href="src/AvailFormsAngular/components/style.css">
+    <!--AvailFormsAngular-->
+
+    <!-- FIM Depêndencias AvailFormsAngular -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="src/login/login.css">
+    <link rel="stylesheet" href="src/main/main.css">
+    <!-- endinject -->
+
+    <!--Icon-->
+    <link rel="shortcut icon" href="img/icon_ff.ico" type="image/x-icon" />
+    <!--Icon-->
+
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect.
+  -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+
+<body class="hold-transition skin-blue sidebar-mini" ng-controller="mainCtrl">
+    <div class="wrapper">
+
+        <!-- Main Header -->
+        <header class="main-header" ng-include="'src/main/header.html'" ng-if="authDetails.authenticated">
+        </header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar" ng-include="'src/main/menu.html'" ng-if="authDetails.authenticated">
+        </aside>
+
+
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content container-fluid">
+                <ng-view></ng-view>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer" ng-include="'src/main/footer.html'">
+
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- Modals-->
+    <div class="example-modal">
+        <div class="modal modal-success" data-target="modalSucesso" id="modalSucesso">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Success Modal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline " data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
+    <!-- /.example-modal -->
+    <div class="example-modal">
+        <div class="modal modal-danger zindex09" data-target="modalErro" id="modalErro">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Danger Modal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-12">
+                            <div class="box box-default collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title pull-left">Detalhes</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" style="text-align: left; color: black">
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                        <button type="button" class="btn btn-outline" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+    <!-- /.example-modal -->
+    <!-- /.modal -->
+
+    <!--Fim Modals-->
+
+    <!-- Depêndencias AvailFormsAngular -->
+
+    <!-- jQuery 2.2.3 -->
+    <script src="src/AvailFormsAngular/libs/jquery-2.2.3.min.js"></script>
+    <!-- jQuery 2.2.3 -->
+
+    <!-- Bootstrap 3.3.6 -->
+    <script src="src/AvailFormsAngular/libs/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+
+    <!-- AdminLTE App -->
+    <script src="src/AvailFormsAngular/admLTE/dist/js/app.min.js"></script>
+    <!-- AdminLTE App -->
+
+    <!--AngularJS-->
+    <script src="src/AvailFormsAngular/libs/angular.min.js"></script>
+    <script src="src/AvailFormsAngular/libs/angular-touch.js"></script>
+    <script src="src/AvailFormsAngular/libs/angular-route.min.js"></script>
+    <script src="src/AvailFormsAngular/libs/angular-ui.js"></script>
+    <script src="src/AvailFormsAngular/libs/angular-cookies.min.js"></script>
+    <script src="src/AvailFormsAngular/libs/ngStorage.min.js"></script>
+    <!--AngularJS-->
+
+    <!-- UI-Bootstrap-->
+    <script src="src/AvailFormsAngular/libs/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <!-- UI-Bootstrap-->
+
+    <!-- AdminLTE -->
+    <script src="src/AvailFormsAngular/admLTE/plugins/jQueryUI/jquery-ui.js"></script>
+    <script src="src/AvailFormsAngular/admLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="src/AvailFormsAngular/admLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="src/AvailFormsAngular/admLTE/plugins/select2/select2.full.min.js"></script>
+    <script src="src/AvailFormsAngular/admLTE/plugins/iCheck/icheck.min.js"></script>
+    <script src="src/AvailFormsAngular/admLTE/plugins/bootstrap-filestyle/bootstrap-filestyle.js"></script>
+    <!-- AdminLTE -->
+
+    <!--Input Masks-->
+    <script src="src/AvailFormsAngular/libs/angular-input-masks-standalone.min.js"></script>
+    <script src="src/AvailFormsAngular/libs/angular-locale_pt-br.js"></script>
+    <!--Input Masks-->
+
+    <!--NgNotify-->
+    <script src="src/AvailFormsAngular/libs/ngNotify/ng-notify.min.js"></script>
+    <!--NgNotify-->
+
+    <!-- angularBase64 -->
+    <script src="src/AvailFormsAngular/libs/angular-base64-upload.js"></script>
+    <!-- angularBase64 -->
+
+    <!--AvailFormsAngular-->
+    <script src="src/AvailFormsAngular/index.js"></script>
+    <script src="src/AvailFormsAngular/utils/interceptor.js"></script>
+    <script src="src/AvailFormsAngular/utils/utilFilter.js"></script>
+    <script src="src/AvailFormsAngular/utils/utilsDate.js"></script>
+    <script src="src/AvailFormsAngular/utils/utilService.js"></script>
+    <script src="src/AvailFormsAngular/utils/utilsModalSrv.js"></script>
+    <script src="src/AvailFormsAngular/utils/utilsUi.js"></script>
+    <script src="src/AvailFormsAngular/components/Form/formEditComponent.js"></script>
+    <script src="src/AvailFormsAngular/components/imagem/imagemComponent.js"></script>
+    <script src="src/AvailFormsAngular/components/Listagem/formListComponent.js"></script>
+    <script src="src/AvailFormsAngular/components/message/message.js"></script>
+    <script src="src/AvailFormsAngular/components/modal/modalEditComponent.js"></script>
+    <script src="src/AvailFormsAngular/components/modal/modalPesquisaComponent.js"></script>
+    <script src="src/AvailFormsAngular/components/Pesquisa/componentPesquisa.js"></script>
+    <!--AvailFormsAngular-->
+
+    <!-- FIM Depêndencias AvailFormsAngular -->
+
+    <!-- inject:js -->
+
+    <script src="src/index.js"></script>
+
+    <script src="src/cidade/cidadeCtrl.js"></script>
+
+    <script src="src/cidade/manterCidadeCtrl.js"></script>
+
+    <script src="src/estado/estadoCtrl.js"></script>
+
+    <script src="src/estado/manterEstadoCtrl.js"></script>
+
+    <script src="src/home/home.js"></script>
+
+    <script src="src/login/login.js"></script>
+
+    <script src="src/main/main.js"></script>
+
+    <script src="src/services/loguinLogoutSrv.js"></script>
+
+    <script src="src/usuario/manterUsuario.js"></script>
+
+    <script src="src/usuario/usuario.js"></script>
+
+    <!-- endinject -->
+
+</body>
+
+</html>

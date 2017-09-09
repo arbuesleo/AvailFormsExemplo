@@ -1,0 +1,29 @@
+{
+  "name": "frontendadm",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "AvailFormsAngular": "git+https://git@github.com/leogomes26/AvailFormsAngular.git",
+    "gulp": "^3.9.1",
+    "gulp-build": "^0.5.3",
+    "gulp-connect": "^5.0.0",
+    "gulp-include": "^2.3.1",
+    "gulp-inject": "^4.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-inject": "^4.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gomesleonardo@bitbucket.org/availTec/farmafacil-adm.git"
+  },
+  "homepage": "https://bitbucket.org/availTec/farmafacil-adm#readme",
+  "description": ""
+}
