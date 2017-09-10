@@ -1,4 +1,4 @@
-INSERT INTO usuario (nome, email, senha, situacao, telefone) VALUES ('Admin', 'admin@admin.com', '9fe76e18dd29100230680fa6c812e26c4da4b3cf48a85850910e6f4400a6b3ff9ec05190c175f592', 0, '34998824228');
+INSERT INTO usuario (nome, email, senha, situacao, telefone, data_nascimento) VALUES ('Admin', 'admin@admin.com', '9fe76e18dd29100230680fa6c812e26c4da4b3cf48a85850910e6f4400a6b3ff9ec05190c175f592', 0, '34998824228', '2017-08-01');
 
 INSERT INTO `permissao` (`id_permissao`, `role`) VALUES
 	(1, 'ADMIN'),

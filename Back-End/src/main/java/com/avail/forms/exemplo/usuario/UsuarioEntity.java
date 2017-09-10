@@ -1,5 +1,7 @@
 package com.avail.forms.exemplo.usuario;
 
+import java.sql.Blob;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
@@ -13,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -26,6 +30,7 @@ import com.avail.forms.exemplo.permissao.PermissaoEntity;
 import com.avail.forms.exemplo.utils.BaseEntity;
 import com.avail.forms.exemplo.utils.Situacao;
 import com.avail.forms.exemplo.utils.ViewJson;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -45,6 +50,12 @@ public class UsuarioEntity extends BaseEntity<Long> {
 	@CampoForm(label = "Email", tipo = TipoCampo.EMAIL, listagem = true)
 	private String email;
 	
+	@Column(nullable = false, name = "data_nascimento")
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(locale = "pt", shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone="America/Sao_Paulo")
+	@CampoForm(label = "Dt. Nascimento", tipo = TipoCampo.DATA)
+	Date dataNasc;
+	
 	@Column(nullable = false)
 	@CampoForm(label = "Senha", tipo = TipoCampo.SENHA)
 	private String senha;
@@ -57,6 +68,10 @@ public class UsuarioEntity extends BaseEntity<Long> {
 	@Column(nullable = false, length = 11)	
 	private String telefone;
 	
+	@Column(columnDefinition="LONGBLOB", name = "descricao")
+	@CampoForm(label = "Descrição", tipo = TipoCampo.TEXTORICO)
+    private String descricao;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonView(ViewJson.ComImg.class)
 	@Image(label = "Imagem de Perfil")
@@ -68,7 +83,8 @@ public class UsuarioEntity extends BaseEntity<Long> {
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="usuario_id")
-	private List<EnderecoEntity> endereco;
+	private List<EnderecoEntity> endereco;	
+	
 	
 	public UsuarioEntity() {
 		
@@ -147,4 +163,23 @@ public class UsuarioEntity extends BaseEntity<Long> {
 		}
 		return false;
 	}
+	
+	@JsonFormat(locale = "pt", shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	public Date getDataNasc() {
+		return dataNasc;
+	}
+
+	public void setDataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	
 }
