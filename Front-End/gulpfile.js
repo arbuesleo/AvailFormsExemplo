@@ -1,7 +1,9 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var inject = require('gulp-inject');
-var include = require("gulp-include");;
+var include = require("gulp-include");
+
+var srcAvForms = "C:\Users\Leo Gomes\workspace - Leo Gomes\AvailFormsAngular";
 
 gulp.task('index', function() {
     var target = gulp.src('app/index.html');
@@ -52,6 +54,21 @@ gulp.task('copy-AvailFormsAngular', function() {
         .pipe(gulp.dest('./app/src/AvailFormsAngular/libs'));
     //Copiando admLTE
     gulp.src(['./node_modules/AvailFormsAngular/admLTE/**/*'])
+        .pipe(gulp.dest('./app/src/AvailFormsAngular/admLTE'));
+});
+
+gulp.task('avLocal', function() {
+    //Copiando Componentes
+    gulp.src(['C:\Users\Leo Gomes\workspace - Leo Gomes\AvailFormsAngular/src/**/*.js',
+            srcAvForms + '/src/**/*.html',
+            srcAvForms + '/src/**/*.css'
+        ])
+        .pipe(gulp.dest('./app/src/AvailFormsAngular'));
+    //Copiando Libs
+    gulp.src(['C:\Users\Leo Gomes\workspace - Leo Gomes\AvailFormsAngular\libs/**/*'])
+        .pipe(gulp.dest('./app/src/AvailFormsAngular/libs'));
+    //Copiando admLTE
+    gulp.src(['C:\Users\Leo Gomes\workspace - Leo Gomes\AvailFormsAngular/admLTE/**/*'])
         .pipe(gulp.dest('./app/src/AvailFormsAngular/admLTE'));
 });
 
